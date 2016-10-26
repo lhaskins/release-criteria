@@ -119,11 +119,13 @@ def saveData(options, peerList, user_info):
             peerName = "vp%s" % index
 
         if options.blue_mix:
-            url = peerInfo['api_host']
+            url = "%(api_host)s:%(api_port)d" % peerInfo
+            port = str(peerInfo['api_port'])
         else:
             url = "%s:%d" %(ip_address, rest_port)
+            port = "unknown"
 
-        peerData = {'port': "unknown",
+        peerData = {'port': port,
                     'host': "internal",
                     'api-host': url,
                     'name': peerName}
